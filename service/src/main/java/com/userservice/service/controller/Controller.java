@@ -8,7 +8,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class Controller {
     @GetMapping("/profile")
-    public String hello() {
-        return "Hello From User Service";
+    public String profile() {
+        return "Profile Data";
     }
+
+    @GetMapping("/admin")
+    public String admin() {
+        return "Hello Admin";
+    }
+
+    @GetMapping("/customer")
+    public String customer() {
+        return "Hello Customer";
+    }
+
+
 }
