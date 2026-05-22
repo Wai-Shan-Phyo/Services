@@ -1,12 +1,21 @@
 package com.userservice.service.controller;
 
+import com.userservice.service.dto.UserCreatedEvent;
+import com.userservice.service.publisher.UserEventPublisher;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/user")
 public class Controller {
+
+    private final UserEventPublisher publisher;
+    public Controller(UserEventPublisher publisher){
+        this.publisher=publisher;
+    }
+
     @GetMapping("/profile")
     public String profile() {
         return "Profile Data";
@@ -22,5 +31,18 @@ public class Controller {
         return "Hello Customer";
     }
 
+ @PostMapping("/create")
+ public String create(){
+     UserCreatedEvent userCreatedEvent = new UserCreatedEvent(
+             1,
+             "admin",
+             "admin@gmail.com",
+             "ADMIN"
+     );
 
+        publisher.publishUserCreated(
+               userCreatedEvent
+        );
+        return "User Created";
+ }
 }
