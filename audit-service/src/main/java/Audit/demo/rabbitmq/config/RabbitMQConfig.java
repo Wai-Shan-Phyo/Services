@@ -19,10 +19,10 @@ public class RabbitMQConfig {
              "audit.queue";
 
      public static final String ROUTING_KEY =
-             "user.created"; //Message label
+             "user.created"; //Message address label
 
      public static final String EXCHANGE =
-             "user.exchange"; //Message Entry
+             "user.exchange"; //Message  Entry Point
 
      @Bean
      public Queue queue() {
