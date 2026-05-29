@@ -1,5 +1,6 @@
 package com.userservice.service.controller;
 
+import com.userservice.service.business.User.UserService;
 import com.userservice.service.database.UserEntity;
 import com.userservice.service.database.UserRepository;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,21 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/usertest")
 public class UserController {
     private final UserRepository userRepository;
-    public  UserController(UserRepository userRepository){
+    private final UserService userService;
+    public  UserController(UserRepository userRepository,UserService userService){
         this.userRepository=userRepository;
+        this.userService=userService;
     }
     @PostMapping("/create")
-    public String createuser(){
-        UserEntity user = new UserEntity();
-        user.setName("admin");
-
-        user.setEmail("admin@gmail.com");
-
-        user.setRole("ADMIN");
-
-        userRepository.save(user);
-
-        return "USER SAVED";
+    public String createuser() throws Exception{
+         userService.create();
+         return "User Created";
     }
 
 }
