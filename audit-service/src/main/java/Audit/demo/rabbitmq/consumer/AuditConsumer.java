@@ -26,5 +26,12 @@ public class AuditConsumer {
         System.out.println(
                 "Email : " + event.getEmail()
         );
+        System.out.println(
+                "PROCESSING EVENT"
+        );
+
+        throw new RuntimeException(
+                "SIMULATED FAILURE"
+        );
     }
 }
