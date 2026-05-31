@@ -1,21 +1,32 @@
 package com.userservice.service.dto;
 
 public class UserCreatedEvent {
+    private String eventId;
       private int userId;
       private String name ;
+
+
+
     private String email;
-    private String role;
+      private String role;
     public UserCreatedEvent(){
 
     }
 
-    public UserCreatedEvent(int id, String name, String mail, String role) {
+    public UserCreatedEvent(String eventId,int id, String name, String mail, String role) {
+        this.eventId=eventId;
         this.userId=id;
         this.name=name;
         this.email=mail;
         this.role=role;
     }
+    public String getEventId() {
+        return eventId;
+    }
 
+    public void setEventId(String eventId) {
+        this.eventId = eventId;
+    }
     public String getEmail() {
         return email;
     }

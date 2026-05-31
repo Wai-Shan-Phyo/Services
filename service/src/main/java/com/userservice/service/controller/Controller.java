@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/user")
 public class Controller {
@@ -34,6 +36,7 @@ public class Controller {
  @PostMapping("/create")
  public String create(){
      UserCreatedEvent userCreatedEvent = new UserCreatedEvent(
+             UUID.randomUUID().toString(),
              1,
              "admin",
              "admin@gmail.com",

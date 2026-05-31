@@ -2,6 +2,7 @@ package Audit.demo.rabbitmq.dto;
 
 public class UserCreatedEvent {
 
+    private String eventId;
     private Integer userId;
 
     private String name;
@@ -45,4 +46,12 @@ public class UserCreatedEvent {
     public void setRole(String role) {
         this.role = role;
     }
+    public String getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(String eventId) {
+        this.eventId = eventId;
+    }
+
 }
